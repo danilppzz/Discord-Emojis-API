@@ -10,3 +10,14 @@ code and process to make this
 ```git
 git clone https://github.com/danilppzz/Discord-Emojis-API.git
 ```
+
+## Documentation with [SWAGGER](https://swagger.io/) is located at:
+```git
+https://localhost:3000/docs
+```
+
+## You can go to the URL /showcase in the api to see all the emojis.
+```git
+https://localhost:3000/showcase
+```
+<img src="https://github.com/danilppzz/danilppzz/blob/main/image.png">

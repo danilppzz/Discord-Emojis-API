@@ -1,0 +1,94 @@
+paths:
+  /emojis:
+    get:
+      description: Get all the emojis in the api.
+      responses:
+        200:
+          description: 'GET / Successfully requested.'
+        400:
+          description: 'GET / Bad Request.'
+        403:
+          description: 'GET / Unauthorized access.'
+    post:
+      description: Search an specific emojis in the api.
+      parameters:
+        - name: x-api-key
+          in: header
+          description: 'You must have an API key to use this endpoint.'
+          required: true
+          schema:
+            type: string
+        - name: title
+          in: query
+          description: 'You must specify the title of the emoji.'
+          required: true
+          schema:
+            type: string
+        - name: url
+          in: query
+          description: 'You must specify the url of the emoji.'
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'POST / Successfully requested.'
+        400:
+          description: 'POST / Bad Request.'
+        403:
+          description: 'POST / Unauthorized access.'
+  
+  /emojis/{search}:
+    get:
+      description: Search an specific emojis in the api.
+      parameters:
+        - name: type
+          in: query
+          description: 'You must specify the data type for the search.'
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: path
+          description: 'You must specify the value search.'
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'GET / Successfully requested.'
+        400:
+          description: 'GET / Bad Request.'
+        403:
+          description: 'GET / Unauthorized access.'
+  
+  /emojis/{id}:
+    delete:
+      description: Delete selected emoji from the api.
+      parameters:
+        - name: x-api-key
+          in: header
+          description: 'You must have an API key to use this endpoint.'
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: 'You must specify the value id.'
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'GET / Successfully requested.'
+        400:
+          description: 'GET / Bad Request.'
+        403:
+          description: 'GET / Unauthorized access.'
+
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

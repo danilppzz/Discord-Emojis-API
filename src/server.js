@@ -1,30 +1,39 @@
 import Express from "express";
-import swaggerUi from 'swagger-ui-express';
-import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from "swagger-ui-express";
+import swaggerJsdoc from "swagger-jsdoc";
 import { searchEmoji, readAllEmoji, removeEmoji, insertEmoji } from "../sqlite3.js";
+import { swaggerOptions } from "./swagger.js";
 
 const app = Express();
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-app.use('/emojis', (req, res, next) => {
-  const apiKey = req.headers['x-api-key'];
+app.use("/emojis", (req, res, next) => {
+  const apiKey = req.headers["x-api-key"];
 
-  if ((req.method === 'POST' || req.method === 'DELETE') && apiKey && apiKey === "yNxkPSyktVoJ6E7S") {
-
+  if (
+    (req.method === "POST" || req.method === "DELETE") &&
+    apiKey &&
+    apiKey === "yNxkPSyktVoJ6E7S"
+  ) {
+    next();
+  } else if (req.method !== "POST" && req.method !== "DELETE") {
     next();
   } else {
-
-    res.status(403).send('Unauthorized access.');
+    res.status(403).send("Unauthorized access.");
   }
 });
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.get("/", (req, res) => {
   res.json({
     status: 200,
-    version: "1.0.1",
-    links: {LICENSE: "https://github.com/danilppzz/danilppzz/blob/main/LICENSE", DOCS: 'http://localhost:3000/docs'},
-    next_update: "New api docs (Swagger) & emoji preview",
+    version: "1.0.2",
+    links: {
+      LICENSE: "https://github.com/danilppzz/danilppzz/blob/main/LICENSE",
+      DOCS: "http://localhost:3000/docs",
+    }
   });
 });
 
@@ -44,7 +53,7 @@ app.get("/emojis/:search", async (req, res) => {
   const validTypes = ["title", "url", "id"];
   if (type in validTypes)
     return res.status(400).json({ status: 400, message: "Invalid type param." });
-  if (typeof search === "number") types = "id";
+  if (/^\d+$/.test(search)) types = "id";
   if (type == null) return res.redirect(`/emojis/${search}?type=${types}`);
   res.json(await searchEmoji(search, type));
 });

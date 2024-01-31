@@ -12,12 +12,15 @@ export const swaggerOptions = {
           "name": "Apache 2.0",
           "url": "http://www.apache.org/licenses/LICENSE-2.0.html",
         },
-        "version": "1.0.1",
+        "version": "1.0.2",
       },
       "servers": [
         {
-          "url": "https",
+          "url": "http://localhost:3000/",
         },
+        {
+          "url": "https://danilppzz.dev/",
+        }
       ],
       "externalDocs": {
         "description": "Find out more about Discord Emojis API",

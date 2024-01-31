@@ -11,11 +11,11 @@
       font-family: Arial, sans-serif; /* Cambia la fuente según tus preferencias */
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0; /* Cambia el color de fondo según tus preferencias */
+      background-color: #222222; /* Cambia el color de fondo según tus preferencias */
     }
 
     header {
-      background-color: #333;
+      background-color: #222222;
       color: white;
       text-align: center;
       padding: 1em;
@@ -36,12 +36,15 @@
 
     li {
       margin: 1em;
+      display: flex;
+      align-items: center;
       padding: 1em;
-      border: 1px solid #ccc;
+      border: 0.1px solid #fff;
       border-radius: 5px;
-      background-color: white;
+      background-color: #333;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      flex: 0 0 30%; /* Ajusta el ancho de cada elemento según tus preferencias */
+      flex: 0 0 20%; /* Ajusta el ancho de cada elemento según tus preferencias */
+
     }
 
     img {
@@ -52,13 +55,15 @@
     }
 
     pre {
-      background-color: #f4f4f4;
+      background-color: #2a2a2a;
+      color: aliceblue;
       padding: 1em;
       border-radius: 5px;
       overflow-x: auto;
     }
 
     code {
+      margin-left: 0px;
       display: block;
       white-space: pre-wrap;
     }
@@ -72,15 +77,13 @@
     <% for (let i = 0; i < objects.length; i++) { %>
       <li>
         <img src="<%= objects[i].emoji_url %>" alt="<%= objects[i].emoji_name %>">
-        <pre>
-          <code>
-            {
-              "id": <%= objects[i].id %>,
-              "emoji_name": <%= objects[i].emoji_name %>,
-              "emoji_url": <%= objects[i].emoji_url %>,
-            }
-          </code>
-        </pre>
+<pre style="margin-left: 20px; width: 230px; height: 90px;">
+<code>{
+"id": <%= objects[i].id %>,
+"emoji_name": <%= objects[i].emoji_title %>,
+"emoji_url": <a href="<%= objects[i].emoji_url %>">link</a>
+}</code>
+</pre>
       </li>
     <% } %>
   </ul>

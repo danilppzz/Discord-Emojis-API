@@ -8,11 +8,16 @@ app.get("/", (req, res) => {
     status: 200,
     version: "1.0.0",
     license: ["https://github.com/danilppzz/danilppzz/blob/main/LICENSE"],
+    next_update: "New api docs (Swagger) & emoji preview",
   });
 });
 
 app.get("/emojis", async (req, res) => {
   res.json(await readAllEmoji());
+});
+
+app.get("/emoji", async (req, res) => {
+  res.redirect(`/emojis`);
 });
 
 app.get("/emojis/:search", async (req, res) => {
@@ -44,7 +49,7 @@ app.post("/emojis", async (req, res) => {
       .status(400)
       .json({ status: 400, message: "The title cannot be higher than 20 characters." });
 
-  if (!regex.test(url) || url.endsWith('/')) {
+  if (!regex.test(url) || url.endsWith("/")) {
     return res.status(400).json({ status: 400, message: "Invalid emoji URL." });
   }
 

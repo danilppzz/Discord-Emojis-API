@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:SQLite-CDN-Express}/server.db",
+            "name": "discord_emojis_db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

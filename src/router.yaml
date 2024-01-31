@@ -1,4 +1,14 @@
 paths:
+  /showcase:
+    get:
+      description: Get all the emojis in the api.
+      responses:
+        200:
+          description: 'GET / Successfully requested.'
+        400:
+          description: 'GET / Bad Request.'
+        403:
+          description: 'GET / Unauthorized access.'
   /emojis:
     get:
       description: Get all the emojis in the api.

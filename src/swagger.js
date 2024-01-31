@@ -12,7 +12,7 @@ export const swaggerOptions = {
           "name": "Apache 2.0",
           "url": "http://www.apache.org/licenses/LICENSE-2.0.html",
         },
-        "version": "1.0.2",
+        "version": "1.0.3",
       },
       "servers": [
         {

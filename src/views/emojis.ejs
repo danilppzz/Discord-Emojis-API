@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renderizado en Backend</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif; /* Cambia la fuente según tus preferencias */
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0; /* Cambia el color de fondo según tus preferencias */
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    h1 {
+      margin-bottom: 1em;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    li {
+      margin: 1em;
+      padding: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex: 0 0 30%; /* Ajusta el ancho de cada elemento según tus preferencias */
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 1em;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      display: block;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Rended by Backend</h1>
+  </header>
+  <ul>
+    <% for (let i = 0; i < objects.length; i++) { %>
+      <li>
+        <img src="<%= objects[i].emoji_url %>" alt="<%= objects[i].emoji_name %>">
+        <pre>
+          <code>
+            {
+              "id": <%= objects[i].id %>,
+              "emoji_name": <%= objects[i].emoji_name %>,
+              "emoji_url": <%= objects[i].emoji_url %>,
+            }
+          </code>
+        </pre>
+      </li>
+    <% } %>
+  </ul>
+</body>
+</html>

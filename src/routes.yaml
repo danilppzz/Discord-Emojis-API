@@ -1,0 +1,44 @@
+paths:
+  /emojis:
+    get:
+      description: Get all the emojis in the api.
+      responses:
+        200:
+          description: 'GET / Successfully requested.'
+        400:
+          description: 'GET / Bad Request.'
+  
+  /emojis/:search:
+    get:
+      description: Search an specific emojis in the api.
+      parameters:
+        - name: x-api-key
+          in: header
+          description: 'You must have an API key to use this endpoint.'
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: 'You must specify the data type for the search.'
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: params
+          description: 'You must specify the value search.'
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'GET / Successfully requested.'
+        400:
+          description: 'GET / Bad Request.'
+
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      name: x-api-key
+      in: header

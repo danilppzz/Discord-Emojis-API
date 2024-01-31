@@ -1,13 +1,29 @@
 import Express from "express";
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsdoc from 'swagger-jsdoc';
 import { searchEmoji, readAllEmoji, removeEmoji, insertEmoji } from "../sqlite3.js";
 
 const app = Express();
 
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
+app.use('/emojis', (req, res, next) => {
+  const apiKey = req.headers['x-api-key'];
+
+  if ((req.method === 'POST' || req.method === 'DELETE') && apiKey && apiKey === "yNxkPSyktVoJ6E7S") {
+
+    next();
+  } else {
+
+    res.status(403).send('Unauthorized access.');
+  }
+});
+
 app.get("/", (req, res) => {
   res.json({
     status: 200,
-    version: "1.0.0",
-    license: ["https://github.com/danilppzz/danilppzz/blob/main/LICENSE"],
+    version: "1.0.1",
+    links: {LICENSE: "https://github.com/danilppzz/danilppzz/blob/main/LICENSE", DOCS: 'http://localhost:3000/docs'},
     next_update: "New api docs (Swagger) & emoji preview",
   });
 });

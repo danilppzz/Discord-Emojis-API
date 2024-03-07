@@ -20,4 +20,4 @@ https://localhost:3000/docs
 ```git
 https://localhost:3000/showcase
 ```
-<img src="https://github.com/danilppzz/danilppzz/blob/main/image.png">
+
